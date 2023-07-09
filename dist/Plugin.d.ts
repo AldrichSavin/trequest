@@ -2,16 +2,16 @@ export interface PluginDefine {
     /**
      * on register plugin
      */
-    onRegister: (context: any) => void;
+    onRegister: (context: any) => any;
     /**
      * Called after the plug-in has been initialized
      * You can get the context by this.getContext() and do more (you can customize it)
      */
-    onInit: () => void;
+    onInit: () => any;
     /**
      * Before sending the request (before the request is sent, you can modify the request)
      */
-    onBeforeRequest: (request: any) => void;
+    onBeforeRequest: (request: any) => any;
     /**
      * Between onBeforeRequest and onRequest,
      * if a mock identity is provided in onMockRequest,
@@ -21,28 +21,28 @@ export interface PluginDefine {
     /**
      * Send request
      */
-    onRequest: (request: any) => void;
-    onError: (error: any) => void;
+    onRequest: (request: any) => any;
+    onError: (error: any) => any;
     /**
      * Retry request
      */
-    onRetry: (request: any) => void;
+    onRetry: (request: any) => any;
     /**
      * Cancel request (abort｜CancelToken.cancel)
      */
-    onCancel: (request: any) => void;
+    onCancel: (request: any) => any;
     /**
      * After receiving the response (you can modify the response)
      */
-    onResponse: (response: any) => Promise<any> | void;
+    onResponse: (response: any) => Promise<any> | any;
     /**
      * after all
      */
-    onFinally: (response: any) => void;
+    onFinally: (response: any) => any;
     /**
      * destroy
      */
-    destroy: () => void;
+    destroy: () => any;
 }
 export interface Plugin extends Partial<PluginDefine> {
 }

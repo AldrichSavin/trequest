@@ -1,6 +1,6 @@
 import { PluginLifecycle, PluginDefine, Plugin } from "./Plugin";
 import { IAbstractPlugin } from "./AbstractPlugin";
-import Core from "./Core";
+import Core, { MultiServiceBaseURLRecords } from "./Core";
 import { EventProperties } from "./EventEmitter";
 export interface PluginEventEmitterType extends Plugin, IAbstractPlugin {
 }
@@ -8,7 +8,7 @@ export default class PluginEventEmitter extends Set<PluginEventEmitterType> {
     private readonly coreContext;
     constructor(coreContext?: {});
     register(plugin: PluginEventEmitterType[] | PluginEventEmitterType): void;
-    initPluginContext(plugins: PluginEventEmitterType[] | PluginEventEmitterType, core: Core): void;
+    initPluginContext<UserMultiServiceBaseURLRecords = MultiServiceBaseURLRecords>(plugins: PluginEventEmitterType[] | PluginEventEmitterType, core: Core<UserMultiServiceBaseURLRecords, any>): void;
     unregister(plugin: PluginEventEmitterType): void;
     /**
      * filters plugins by lifecycle
