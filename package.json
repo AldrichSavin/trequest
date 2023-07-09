@@ -1,5 +1,5 @@
 {
-  "name": "@doaction/http",
+  "name": "trequest",
   "version": "1.0.0",
   "description": "a simple http client",
   "type": "module",
