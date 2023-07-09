@@ -1,0 +1,32 @@
+{
+  "name": "@doaction/http",
+  "version": "1.0.0",
+  "description": "a simple http client",
+  "type": "module",
+  "source": "src/index.ts",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.modern.js",
+  "unpkg": "./dist/index.umd.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.modern.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "dev": "microbundle watch",
+    "build": "microbundle",
+    "link:global": "pnpm link --global @doaction/http",
+    "unlink:global": "pnpm unlink --global @doaction/http"
+  },
+  "devDependencies": {
+    "axios": "1.4.0",
+    "microbundle": "0.15.1"
+  },
+  "peerDependencies": {
+    "axios": "1.4.0"
+  }
+}
