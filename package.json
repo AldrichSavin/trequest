@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "a simple http client",
   "type": "module",
-  "source": "src/index.ts",
+  "source": "lib/index.ts",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.modern.js",
   "unpkg": "./dist/index.umd.js",
