@@ -1,5 +1,3 @@
-### 🧪 Experiment
-
 ### Axios extensible plug-in implementation
 Do We have to tie the business logic to the request library? This repository tries to give you another way to decouple the request library from the business logic by implementing plugins.
 
