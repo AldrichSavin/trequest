@@ -63,7 +63,8 @@ export default class PluginEventEmitter extends Set<PluginEventEmitterType> {
   ) {
     const plugins = this.filters<Lifecycle>(lifecycle);
     plugins.forEach((plugin) => {
-      plugin.apply(plugin, args);
+      // @ts-ignore
+      return plugin.apply(plugin, args);
     });
   }
 
@@ -81,6 +82,7 @@ export default class PluginEventEmitter extends Set<PluginEventEmitterType> {
     const plugins = this.filters<Lifecycle>(lifecycle);
     return Promise.all(
       plugins.map((plugin) => {
+        // @ts-ignore
         return plugin.apply(plugin, args) as Promise<
           ReturnType<PluginDefine[Lifecycle]>
         >;
@@ -96,6 +98,7 @@ export default class PluginEventEmitter extends Set<PluginEventEmitterType> {
     ...args: Parameters<PluginDefine[Lifecycle]>
   ) {
     for (const iterator of this.filters<Lifecycle>(lifecycle)) {
+      // @ts-ignore
       await iterator.apply(iterator, args);
     }
   }
@@ -113,6 +116,7 @@ export default class PluginEventEmitter extends Set<PluginEventEmitterType> {
   ): ReturnType<PluginDefine[Lifecycle]> | undefined | void {
     const plugins = this.filters<Lifecycle>(lifecycle);
     return plugins.reduce((prev, plugin) => {
+      // @ts-ignore
       return plugin.apply(plugin, args) ?? prev;
     }, undefined);
   }
@@ -131,6 +135,7 @@ export default class PluginEventEmitter extends Set<PluginEventEmitterType> {
     const plugins = this.filters<Lifecycle>(lifecycle);
     return plugins.reduce(async (prev, plugin) => {
       const prevResult = await prev;
+      // @ts-ignore
       return plugin.apply(plugin, args) ?? prevResult;
     }, Promise.resolve(undefined));
   }

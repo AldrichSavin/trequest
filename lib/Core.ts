@@ -4,7 +4,6 @@ import PluginEventEmitter, {
 import { CreateAxiosDefaults } from "axios";
 import { AxiosInstance } from "axios";
 import axios from "axios";
-import { EventProperties } from "./EventEmitter";
 import { AxiosRequestConfig } from "axios";
 import { isObject, isString } from "./helpers";
 import { AxiosResponse } from "axios";
@@ -66,11 +65,11 @@ export default class Core<
 
   protected registerRequestInterceptor() {
     this.instance.interceptors.request.use(
-      async (config) => {
+      async (config: any) => {
         this.run("onRequest", config);
         return config;
       },
-      async (error) => {
+      async (error: any) => {
         const errors = await this.runOnionAsync("onError", error);
         this.run("onFinally", errors || error);
         return Promise.reject(errors || error);
@@ -79,12 +78,12 @@ export default class Core<
   }
 
   protected registerResponseInterceptor() {
-    this.instance.interceptors.response.use(async (response) => {
+    this.instance.interceptors.response.use(async (response: { data: any; }) => {
         const data = await this.runOnionAsync("onResponse", response);
         const result = data || response.data;
         this.run("onFinally", result);
         return result;
-    }, async (error) => {
+    }, async (error: any) => {
         const errors = await this.runOnionAsync("onError", error);
         this.run("onFinally", error);
         return Promise.reject(errors || error);
@@ -159,6 +158,7 @@ export default class Core<
       throw new Error("HttpCore instance is not initialized");
     }
     this.runOnionAsync("onBeforeRequest", config);
+    // @ts-ignore
     return this.instance.request<Data, R, D>(
       this.mergeConfig(config, {
         baseURL: this.getBaseURL(config.baseURL),

@@ -2,7 +2,7 @@ export interface PluginDefine {
     /**
      * on register plugin
      */
-    onRegister: (context) => any;
+    onRegister: (context: any) => any;
 
     /**
      * Called after the plug-in has been initialized
@@ -13,42 +13,42 @@ export interface PluginDefine {
     /**
      * Before sending the request (before the request is sent, you can modify the request)
      */
-    onBeforeRequest: (request) => any;
-    
+    onBeforeRequest: (request: any) => any;
+
     /**
      * Between onBeforeRequest and onRequest,
      * if a mock identity is provided in onMockRequest,
      * it will respond directly to onResponse as simulated data
      */
-    onMockRequest: (request) => void;
+    onMockRequest: (request: any) => void;
 
     /**
      * Send request
      */
-    onRequest: (request) => any;
+    onRequest: (request: any) => any;
 
     // Timeout/Abort/NetworkError/CustomerError/ServerError
-    onError: (error) => any;
+    onError: (error: any) => any;
 
     /**
      * Retry request
      */
-    onRetry: (request) => any;
+    onRetry: (request: any) => any;
 
     /**
      * Cancel request (abort｜CancelToken.cancel)
      */
-    onCancel: (request) => any;
-    
+    onCancel: (request: any) => any;
+
     /**
      * After receiving the response (you can modify the response)
      */
-    onResponse: (response) => Promise<any> | any;
+    onResponse: (response: any) => Promise<any> | any;
 
     /**
      * after all
      */
-    onFinally: (response) => any;
+    onFinally: (response: any) => any;
 
     /**
      * destroy

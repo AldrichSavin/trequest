@@ -14,6 +14,7 @@ export default class EventEmitter extends Map<EventProperties, EventListener> {
     emit<T extends any[] = []>(event: EventProperties, ...args: [...T]): boolean {
         const listener = this.get(event);
         if (listener) {
+            // @ts-ignore
             listener.apply(this, args);
             return true;
         }

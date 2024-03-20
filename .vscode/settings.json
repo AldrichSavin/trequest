@@ -1,9 +1,7 @@
 {
     "cSpell.words": [
         "axios",
-        "doaction",
         "microbundle",
-        "Retryable",
-        "trequest"
+        "Retryable"
     ]
 }

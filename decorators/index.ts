@@ -1,5 +1,5 @@
 import { CreateMethodDecorator } from "./decorator";
-import { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios,  { AxiosRequestConfig, AxiosResponse } from "axios";
 
 const requestInstance = axios.create();
 

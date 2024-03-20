@@ -10,7 +10,7 @@ export default abstract class AbstractPlugin extends EventEmitter {
      * The runtime context of the plug-in
      */
     private _context;
-    constructor();
+    protected constructor();
     /**
      * The name of the plug-in
      */
@@ -23,7 +23,7 @@ export default abstract class AbstractPlugin extends EventEmitter {
      * This function will be called when the plug-in is registered,
      * passing the current runtime context to each plug-in so that the plug-in can communicate directly
      */
-    protected setContext(context: any): void;
+    protected setContext(context: {}): void;
     /**
      * You can get the runtime context inside the plugin by modifying the function
      */

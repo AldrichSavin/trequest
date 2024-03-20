@@ -13,10 +13,10 @@ export default abstract class AbstractPlugin extends EventEmitter {
      */
     private _context: {} = {};
 
-    constructor() {
+    protected constructor() {
         super();
     }
-    
+
     /**
      * The name of the plug-in
      */
@@ -28,10 +28,10 @@ export default abstract class AbstractPlugin extends EventEmitter {
     protected version?: string;
 
     /**
-     * This function will be called when the plug-in is registered, 
+     * This function will be called when the plug-in is registered,
      * passing the current runtime context to each plug-in so that the plug-in can communicate directly
      */
-    protected setContext(context): void {
+    protected setContext(context: {}): void {
         this._context = context;
     }
 
